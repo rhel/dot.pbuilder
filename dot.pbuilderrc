@@ -1,0 +1,12 @@
+: ${DISTRIBUTION:="$(lsb_release --short --codename)"}
+: ${ARCHITECTURE:="$(dpkg --print-architecture)"}
+COMPONENTS="main restricted universe multiverse"
+AUTO_DEBSIGN=yes
+USE_PDEBUILD_INTERNAL=yes
+BASETGZ="/var/cache/pbuilder/$DISTRIBUTION-$ARCHITECTURE.tgz"
+APTCACHEHARDLINK=no
+HOOKDIR="/var/cache/pbuilder/hook.d"
+#OTHERMIRROR="deb [trusted=yes] http://repo.domain.tld/ubuntu/ xenial main"
+EXTRAPACKAGES=eatmydata
+export LD_PRELOAD=${LD_PRELOAD:+"$LD_PRELOAD "}libeatmydata.so
+APTKEYRINGS="/etc/apt/trusted.gpg"
