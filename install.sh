@@ -9,5 +9,6 @@ if [ -f "$config" ]; then
   if [ "$answer" != "y" ]; then
     exit
   fi
-  cat dot.pbuilderrc > "$config"
 fi
+
+cat dot.pbuilderrc > "$config"
